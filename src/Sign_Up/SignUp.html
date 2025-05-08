@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Following code has been commented with appropriate comments for your reference. -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://api.fontshare.com/v2/css?f[]=instrument-sans@400,700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="./SignUp.css" />
+    <!-- Linking external CSS file -->
+  </head>
+  <body>
+    <div class="container" style="margin-top: 5%">
+      <!-- Main container with margin-top -->
+      <div class="signup-grid">
+        <!-- Grid layout for sign-up form -->
+        <div class="signup-text">
+          <!-- Title for the sign-up form -->
+          <h1>Sign Up</h1>
+        </div>
+        <div class="signup-text1" style="text-align: left">
+          <!-- Text for existing members to log in -->
+          Already a member?
+          <span
+            ><a href="../Login/Login.html" style="color: #2190ff">
+                &nbsp;Login</a
+            ></span
+          >
+        </div>
+        <div class="signup-form">
+          <!-- Form for user sign-up -->
+          <form>
+            <!-- Start of the form -->
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select id="role" class="role-select" name="role">
+                <option value="">Select role</option>
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+                               
+              </select>
+            </div>
+            <div class="form-group">
+              <!-- Form group for user's name -->
+              <label for="name">Name</label>
+              <!-- Label for name input field -->
+              <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                class="form-control"
+                placeholder="Enter your name"
+                aria-describedby="helpId"
+              />
+              <!-- Text input field for name -->
+            </div>
+
+            <div class="form-group">
+              <!-- Form group for user's phone number -->
+              <label for="phone">Phone</label>
+              <!-- Label for phone input field -->
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                required
+                class="form-control"
+                placeholder="Enter your phone number"
+                aria-describedby="helpId"
+              />
+              <!-- Tel input field for phone number -->
+            </div>
+
+            <div class="form-group">
+              <!-- Form group for user's email -->
+              <label for="email">Email</label>
+              <!-- Label for email input field -->
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                class="form-control"
+                placeholder="Enter your email"
+                aria-describedby="helpId"
+              />
+              <!-- Email input field -->
+            </div>
+
+            <div class="form-group">
+              <!-- Form group for user's password -->
+              <label for="password">Password</label>
+              <!-- Label for password input field -->
+              <input
+                name="password"
+                id="password"
+                required
+                class="form-control"
+                placeholder="Enter your password"
+                aria-describedby="helpId"
+              />
+              <!-- Password input field -->
+            </div>
+            <div class="form-group">
+              <!-- Form group for user's password -->
+              <label for="password">Confirm Password</label>
+              <!-- Label for password input field -->
+              <input
+                name="password"
+                id="password"
+                required
+                class="form-control"
+                placeholder="Re-enter your password"
+                aria-describedby="helpId"
+              />
+              <!-- Password input field -->
+            </div>
+            <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Submit
+          </button>
+          <!-- Submit button -->
+          <button
+            type="reset"
+            class="btn btn-danger"
+          >
+            Reset
+          </button>
+          <!-- Reset button -->
+            
+          </form>
+          <!-- End of the form -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

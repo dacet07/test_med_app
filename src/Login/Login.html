@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Following code has been commented with appropriate comments for your reference. -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=instrument-sans@400,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="./Login.css" />
+    <!-- Linking external CSS file -->
+  </head>
+  <body>
+    <div class="container" style="margin-top: 5%">
+      <!-- Main container with margin-top -->
+      <div class="login-grid">
+        <!-- Grid layout for sign-up form -->
+        <div class="login-text">
+          <!-- Title for the sign-up form -->
+          <h1>Login</h1>
+        </div>
+        <div class="login-text1" style="text-align: left">
+          <!-- Text for existing members to log in -->
+          Are you a new member?
+          <span
+            ><a href="../Login/Login.html" style="color: #2190ff">
+              &nbsp;Sign Up Here</a
+            ></span
+          >
+        </div>
+        <div class="login-form">
+          <!-- Form for user sign-up -->
+          <form>
+            <!-- Start of the form -->
+
+            <div class="form-group">
+              <!-- Form group for user's email -->
+              <label for="email">Email</label>
+              <!-- Label for email input field -->
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                class="form-control"
+                placeholder="Enter your email"
+                aria-describedby="helpId"
+              />
+              <!-- Email input field -->
+            </div>
+
+            <div class="form-group">
+              <!-- Form group for user's password -->
+              <label for="password">Password</label>
+              <!-- Label for password input field -->
+              <input
+                name="password"
+                id="password"
+                required
+                class="form-control"
+                placeholder="Enter your password"
+                aria-describedby="helpId"
+              />
+              <!-- Password input field -->
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+            <!-- Submit button -->
+            <button type="reset" class="btn btn-danger">Reset</button>
+            <!-- Reset button -->
+          </form>
+          <!-- End of the form -->
+        </div>
+        
+      </div>
+      <div class="login-text3">Forgot Password?</div>
+    </div>
+  </body>
+</html>

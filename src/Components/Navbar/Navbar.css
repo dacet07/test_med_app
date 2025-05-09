@@ -5,7 +5,7 @@
 
 body {
     background-attachment: fixed;
-    background-image: url('../images/background.jpg');
+    background-image: url('../../assets/images/background.jpg');
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
@@ -186,8 +186,18 @@ nav {
     width: 120px;
     height: 45px;
     font-size: 1.1rem;
-        
-}
+  
+    /* This is what centers the text inside */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    /* Optional for consistency */
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+  }
+  
 
 .btn1:hover {
     background-color: #3685fb; /* Hover effect */

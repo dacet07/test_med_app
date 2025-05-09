@@ -38,9 +38,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="link">
-            
-              <button className="btn1" onClick={() => navigate('/login')}>Login</button>
-            
+            <Link to="/login">
+              <button className="btn1">Login</button>
+            </Link>
           </li>
         </ul>
       </nav>

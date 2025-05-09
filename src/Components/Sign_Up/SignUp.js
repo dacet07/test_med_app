@@ -31,7 +31,7 @@ const SignUp = () => {
 
   // Password validation: check for minimum length
   const validatePassword = (password) => {
-    return password.length >= 6; // You can increase this number for stronger password requirements
+    return password.length >= 6; 
   };
 
   // Confirm Password validation: check if it matches the password

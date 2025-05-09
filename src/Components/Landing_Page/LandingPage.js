@@ -17,17 +17,14 @@ const Landing_Page = () => {
                 Our Responsibility
               </span>
             </h1>
-              <div class="blob-cont"> {/* Creating a div with class name 'blob-cont' */}
-                  <div class="blue blob"></div> {/* Creating a blue blob inside the 'blob-cont' div */}
-              </div>
-              <div class="blob-cont"> {/* Creating another div with class name 'blob-cont' */}
-                  <div class="blue1 blob"></div> {/* Creating a different blue blob inside the second 'blob-cont' div */}
-              </div>
+            
+             
             <h4>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque at quae ducimus. Suscipit omnis quibusdam non cum rem voluptatem!
+            Book your appointment online in just a few clicks and take control of your well-being today. <br/>
+            Start your journey to better health now.
             </h4>
             <a href="#services"> {/* Creating a hyperlink to jump to the 'services' section */}
-              <button class="button">Get Started</button> {/* Creating a button with class name 'button' */}
+              <button className="button">Get Started</button> {/* Creating a button with class name 'button' */}
             </a>
         </div>
       </div>

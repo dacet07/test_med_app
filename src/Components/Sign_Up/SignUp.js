@@ -51,10 +51,11 @@ const SignUp = () => {
             window.location.reload(); // Refresh the page
         } else {
             if (json.errors) {
-                setShowerr(json.errors.map(error => error.msg).join(", "));
-            } else {
-                setShowerr(json.error);
-            }
+                const messages = json.errors.map(error => error.msg).join(', ');
+    setShowerr(messages);
+} else {
+    setShowerr(json.error || "Something went wrong");
+}
         }
     };
 
@@ -152,7 +153,12 @@ const SignUp = () => {
                             </div>
 
                             {/* Error Message */}
-                            {showerr && <p className="error">{showerr}</p>}
+                            {Array.isArray(showerr)
+  ? showerr.map((error, idx) => (
+      <p key={idx} className="error">{error.msg || error}</p>
+    ))
+  : showerr && <p className="error">{showerr}</p>}
+
 
                             {/* Submit and Reset buttons */}
                             <button type="submit" className="btn btn-primary">

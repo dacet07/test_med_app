@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 import healthyLogo from '../../assets/images/healthy_logo.png';
@@ -32,9 +33,9 @@ const Navbar = () => {
           <li className="link"><a href="#">Health Blog</a></li>
           <li className="link"><a href="#">Reviews</a></li>
           <li className="link">
-            
-              <button className="btn1" onClick={() => navigate('/signup')}>Sign Up</button>
-            
+            <Link to="/signup">
+              <button className="btn1">Sign Up</button>
+            </Link>
           </li>
           <li className="link">
             

@@ -8,13 +8,20 @@ body{
 /* Styles for the container element */
 .container {
     max-width: 500px; /* Set maximum width for the container */
-    height:900px;
+    min-height:900px;
     margin: 0 auto; /* Center the container horizontally */
     padding: 20px 40px; /* Add padding inside the container */
     margin-top: 10%; /* Set top margin as a percentage of the viewport height */
     overflow: hidden; /* Hide any overflowing content */
     background-color: #D8EAFF;
+    border: 10px solid white;
+    
    
+}
+.space-top {
+    height:50px;
+    width: 100%;
+    
 }
 
 /* Styles for the password visibility icon */
@@ -156,4 +163,9 @@ form{
 .btn-danger {
     background-color: #ED714E; /* Set background color for danger button */
     color: #fff; /* Set text color for danger button */
+}
+.error{
+    color:#d22e01;
+    font-size: 0.9rem;
+    padding: 5px 0 0 5px;
 }

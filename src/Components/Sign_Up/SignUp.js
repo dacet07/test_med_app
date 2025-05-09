@@ -1,189 +1,172 @@
 import React, { useState } from 'react';
 import './SignUp.css';
+import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../config';
 
 const SignUp = () => {
-  const [formData, setFormData] = useState({
-    role: '',
-    name: '',
-    phone: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
+    // State variables for the form inputs
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');  // Define confirmPassword state
+    const [showerr, setShowerr] = useState(''); // State to show error messages
+    const navigate = useNavigate(); // Navigation hook from react-router
 
-  const [errors, setErrors] = useState({});
+    // Function to handle form submission
+    const register = async (e) => {
+        e.preventDefault(); // Prevent default form submission
 
-  const validateRole = (role) => {
-    return role !== '';
-  };
+        // Check if the password and confirm password match
+        if (password !== confirmPassword) {
+            setShowerr('Passwords do not match');
+            return;
+        }
 
-  // Phone validation: must be exactly 10 digits
-  const validatePhone = (phone) => {
-    const phoneRegex = /^[0-9]{10}$/;
-    return phoneRegex.test(phone);
-  };
+        // API Call to register user
+        const response = await fetch(`${API_URL}/api/auth/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password,
+                phone: phone,
+            }),
+        });
 
-  // Email validation: simple regex for email format
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+        const json = await response.json(); // Parse the response JSON
 
-  // Password validation: check for minimum length
-  const validatePassword = (password) => {
-    return password.length >= 6; 
-  };
+        if (json.authtoken) {
+            // Store user data in session storage
+            sessionStorage.setItem("auth-token", json.authtoken);
+            sessionStorage.setItem("name", name);
+            sessionStorage.setItem("phone", phone);
+            sessionStorage.setItem("email", email);
 
-  // Confirm Password validation: check if it matches the password
-  const validateConfirmPassword = (password, confirmPassword) => {
-    return password === confirmPassword;
-  };
+            // Redirect user to home page
+            navigate("/");
+            window.location.reload(); // Refresh the page
+        } else {
+            if (json.errors) {
+                setShowerr(json.errors.map(error => error.msg).join(", "));
+            } else {
+                setShowerr(json.error);
+            }
+        }
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let validationErrors = {};
+    return (
+        <>
+            <div className="space-top"></div>
+            <div className="container" style={{ marginTop: '5%' }}>
+                <div className="signup-grid">
+                    <div className="signup-text">
+                        <h1>Sign Up</h1>
+                    </div>
+                    <div className="signup-text1" style={{ textAlign: 'left' }}>
+                        Already a member?
+                        <span>
+                            <a href="../Login/Login.html" style={{ color: '#2190ff' }}>
+                                &nbsp;Login
+                            </a>
+                        </span>
+                    </div>
+                    <div className="signup-form">
+                        <form onSubmit={register}>
+                            {/* Name field */}
+                            <div className="form-group">
+                                <label htmlFor="name">Name</label>
+                                <input
+                                    value={name}
+                                    type="text"
+                                    onChange={(e) => setName(e.target.value)}
+                                    name="name"
+                                    id="name"
+                                    className="form-control"
+                                    placeholder="Enter your name"
+                                    aria-describedby="helpId"
+                                />
+                            </div>
 
-    // Validate each field
-    if (!formData.role) validationErrors.role = 'Role is required.';
-    if (!formData.name) validationErrors.name = 'Name is required.';
-    if (!formData.phone || !validatePhone(formData.phone))
-      validationErrors.phone = 'Phone number must be 10 digits.';
-    if (!formData.email || !validateEmail(formData.email))
-      validationErrors.email = 'Please enter a valid email address.';
-    if (!formData.password || !validatePassword(formData.password))
-      validationErrors.password = 'Password must be at least 6 characters long.';
-    if (!formData.confirmPassword || !validateConfirmPassword(formData.password, formData.confirmPassword))
-      validationErrors.confirmPassword = 'Passwords must match.';
+                            {/* Phone field */}
+                            <div className="form-group">
+                                <label htmlFor="phone">Phone</label>
+                                <input
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    type="tel"
+                                    name="phone"
+                                    id="phone"
+                                    className="form-control"
+                                    placeholder="Enter your phone number"
+                                    aria-describedby="helpId"
+                                />
+                            </div>
 
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors); // Set errors if any
-    } else {
-      // Proceed with form submission (e.g., send data to the server)
-      alert('Form submitted successfully');
-    }
-  };
+                            {/* Email field */}
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    className="form-control"
+                                    placeholder="Enter your email"
+                                    aria-describedby="helpId"
+                                />
+                            </div>
 
-  return (
-    <>
-      <div className="space-top"></div>
-      <div className="container" style={{ marginTop: '5%' }}>
-        <div className="signup-grid">
-          <div className="signup-text">
-            <h1>Sign Up</h1>
-          </div>
-          <div className="signup-text1" style={{ textAlign: 'left' }}>
-            Already a member?
-            <span>
-              <a href="../Login/Login.html" style={{ color: '#2190ff' }}>
-                &nbsp;Login
-              </a>
-            </span>
-          </div>
-          <div className="signup-form">
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="role">Role</label>
-                <select
-                  id="role"
-                  className="role-select"
-                  name="role"
-                  value={formData.role}
-                  onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                >
-                  <option value="">Select role</option>
-                  <option value="patient">Patient</option>
-                  <option value="doctor">Doctor</option>
-                </select>
-                {errors.role && <p className="error">{errors.role}</p>}
-              </div>
+                            {/* Password field */}
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    className="form-control"
+                                    placeholder="Enter your password"
+                                    aria-describedby="helpId"
+                                />
+                            </div>
 
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="form-control"
-                  placeholder="Enter your name"
-                  aria-describedby="helpId"
-                />
-                {errors.name && <p className="error">{errors.name}</p>}
-              </div>
+                            {/* Confirm Password field */}
+                            <div className="form-group">
+                                <label htmlFor="confirmPassword">Confirm Password</label>
+                                <input
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    type="password"
+                                    name="confirmPassword"
+                                    id="confirmPassword"
+                                    className="form-control"
+                                    placeholder="Re-enter your password"
+                                    aria-describedby="helpId"
+                                />
+                            </div>
 
-              <div className="form-group">
-                <label htmlFor="phone">Phone</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  id="phone"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="form-control"
-                  placeholder="Enter your phone number"
-                  aria-describedby="helpId"
-                />
-                {errors.phone && <p className="error">{errors.phone}</p>}
-              </div>
+                            {/* Error Message */}
+                            {showerr && <p className="error">{showerr}</p>}
 
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="form-control"
-                  placeholder="Enter your email"
-                  aria-describedby="helpId"
-                />
-                {errors.email && <p className="error">{errors.email}</p>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="form-control"
-                  placeholder="Enter your password"
-                  aria-describedby="helpId"
-                />
-                {errors.password && <p className="error">{errors.password}</p>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                  className="form-control"
-                  placeholder="Re-enter your password"
-                  aria-describedby="helpId"
-                />
-                {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
-              </div>
-
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-              <button type="reset" className="btn btn-danger">
-                Reset
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+                            {/* Submit and Reset buttons */}
+                            <button type="submit" className="btn btn-primary">
+                                Submit
+                            </button>
+                            <button type="reset" className="btn btn-danger">
+                                Reset
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
 
 export default SignUp;

@@ -16,11 +16,14 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
     sessionStorage.setItem('appointment-date', appointmentDate);
     sessionStorage.setItem('appointment-selectedSlot', selectedSlot);
 
-    const doctorData = {
+    const newDoctorData = {
         name: doctorName,
         speciality: doctorSpeciality
       };
-      localStorage.setItem('doctorData', JSON.stringify(doctorData));
+      
+      const existingData = JSON.parse(localStorage.getItem('doctorDataList')) || [];
+      existingData.push(newDoctorData);
+      localStorage.setItem('doctorDataList', JSON.stringify(existingData));
 
     // Izsaucam onSubmit funkciju, ja nepieciešams augšupielādēt datus
     onSubmit({ name, phoneNumber, appointmentDate, selectedSlot });

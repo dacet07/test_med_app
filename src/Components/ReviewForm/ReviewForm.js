@@ -1,50 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import './Reviews.css'; // Pievieno stilus pēc nepieciešamības
+import FeedbackForm from '../FeedbackForm/FeedbackForm';
+import './ReviewForm.css';
 
 const Reviews = () => {
   const [doctors, setDoctors] = useState([]);
   const [reviews, setReviews] = useState({});
+  const [showFormFor, setShowFormFor] = useState(null); // doctorName
 
-  // Funkcija, lai ielādētu atsauksmes no localStorage
-  const loadReviewsFromLocalStorage = () => {
-    const storedReviews = JSON.parse(localStorage.getItem('reviews')) || {};
-    setReviews(storedReviews);
-  };
-
-  // Ielādē ārstu datus un atsauksmes no localStorage
   useEffect(() => {
-    const storedDoctor = JSON.parse(localStorage.getItem('doctorData'));
-    if (storedDoctor) {
-      // Ja ir tikai viens ārsts, pārveidojam to uz masīvu
-      const doctorArray = Array.isArray(storedDoctor) ? storedDoctor : [storedDoctor];
-      setDoctors(doctorArray);
-    }
-    loadReviewsFromLocalStorage(); // Ielādē atsauksmes
+    const storedDoctors = JSON.parse(localStorage.getItem('doctorDataList')) || [];
+    const storedReviews = JSON.parse(localStorage.getItem('reviews')) || {};
+    setDoctors(storedDoctors);
+    setReviews(storedReviews);
   }, []);
 
-  // Funkcija atsauksmes saglabāšanai localStorage
   const saveReviewsToLocalStorage = (newReviews) => {
     localStorage.setItem('reviews', JSON.stringify(newReviews));
   };
 
-  // Funkcija, lai lietotājs varētu pievienot atsauksmi
-  const handleFeedback = (doctorName) => {
-    const userReview = prompt(`Write your feedback for Dr. ${doctorName}:`);
-    if (userReview) {
-      // Pievieno atsauksmi uzreiz uz state
-      const updatedReviews = { ...reviews, [doctorName]: userReview };
-      setReviews(updatedReviews);
-      // Saglabā atsauksmes localStorage
-      saveReviewsToLocalStorage(updatedReviews);
-    }
+  const handleSubmitReview = (doctorName, formData) => {
+    const updated = {
+      ...reviews,
+      [doctorName]: `Name: ${formData.name}, Rating: ${formData.rating || 'N/A'}, Review: ${formData.review}`
+    };
+    setReviews(updated);
+    saveReviewsToLocalStorage(updated);
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className='reviewform'>
       <h2>Doctor Reviews</h2>
       <table border="1" cellPadding="10" cellSpacing="0">
         <thead>
-          <tr>
+          <tr style={{ backgroundColor: '#f0f0f0' }}>
             <th>Serial No.</th>
             <th>Doctor Name</th>
             <th>Doctor Speciality</th>
@@ -54,18 +42,27 @@ const Reviews = () => {
         </thead>
         <tbody>
           {doctors.map((doc, index) => (
-            <tr key={index}>
+            <tr key={index} style={{ borderTop: '1px solid #ccc' }}>
               <td>{index + 1}</td>
               <td>{doc.name}</td>
               <td>{doc.speciality}</td>
               <td>
-                <button onClick={() => handleFeedback(doc.name)}>Click Here</button>
+                <button onClick={() => setShowFormFor(doc.name)}>Click Here</button>
               </td>
               <td>{reviews[doc.name] || '—'}</td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {/* Show feedback form if one doctor is selected */}
+      {showFormFor && (
+        <FeedbackForm
+          doctorName={showFormFor}
+          onSubmit={handleSubmitReview}
+          onClose={() => setShowFormFor(null)}
+        />
+      )}
     </div>
   );
 };

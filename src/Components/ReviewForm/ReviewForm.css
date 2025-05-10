@@ -1,0 +1,31 @@
+.reviewform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  
+}
+
+.reviewform table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 70%;
+  background-color: white;
+}
+
+.reviewform th,
+.reviewform td {
+  border-top: 1px solid #ccc; /* Horizontal line */
+  border-bottom: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.reviewform thead tr {
+  background-color: #f2f2f2; /* Light gray header */
+}

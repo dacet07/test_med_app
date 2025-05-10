@@ -25,7 +25,7 @@ function App() {
         <BrowserRouter>
           {/* Display the Navbar component */}
           <Navbar/>
-
+          <Notification />
           {/* Set up the Routes for different pages */}
           <Routes>
             <Route path="/" element={<LandingPage/>}/>
@@ -33,8 +33,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/instant-consultation" element={<InstantConsultation />} />
             <Route path="/search-doctor" element={<BookingConsultation />} />
-            <Route path="/test" element={<Notification />} />
+           
           </Routes>
+          
         </BrowserRouter>
     </div>
   );

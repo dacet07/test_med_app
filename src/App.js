@@ -11,8 +11,9 @@ import SignUp from './Components/Sign_Up/SignUp';
 import Login from './Components/Login/Login';
 import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation';
 import BookingConsultation from './Components/BookingConsultation';
+import Notification from './Components/Notification/Notification';
 
-import AppointmentForm from './Components/AppointmentForm/AppointmentForm';
+
 
 // Function component for the main App
 function App() {
@@ -32,7 +33,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/instant-consultation" element={<InstantConsultation />} />
             <Route path="/search-doctor" element={<BookingConsultation />} />
-            <Route path="/test" element={<AppointmentForm />} />
+            <Route path="/test" element={<Notification />} />
           </Routes>
         </BrowserRouter>
     </div>

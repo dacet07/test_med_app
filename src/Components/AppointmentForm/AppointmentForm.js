@@ -6,9 +6,26 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
   const [appointmentDate, setAppointmentDate] = useState('');
   const [selectedSlot, setSelectedSlot] = useState('');
 
+  // Funkcija formu nosūtīšanai
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    // Saglabājam datus sessionStorage
+    sessionStorage.setItem('appointment-name', name);
+    sessionStorage.setItem('appointment-phoneNumber', phoneNumber);
+    sessionStorage.setItem('appointment-date', appointmentDate);
+    sessionStorage.setItem('appointment-selectedSlot', selectedSlot);
+
+    const doctorData = {
+        name: doctorName,
+        speciality: doctorSpeciality
+      };
+      localStorage.setItem('doctorData', JSON.stringify(doctorData));
+
+    // Izsaucam onSubmit funkciju, ja nepieciešams augšupielādēt datus
     onSubmit({ name, phoneNumber, appointmentDate, selectedSlot });
+
+    // Notīrām formu pēc datu saglabāšanas
     setName('');
     setPhoneNumber('');
     setAppointmentDate('');

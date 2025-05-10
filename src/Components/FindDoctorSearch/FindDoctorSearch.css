@@ -167,8 +167,10 @@
 }
 
 .finddoctor{
-    /* height: 0 auto; */
+   
     overflow: hidden;
+    
+    padding-top: 100px;
 } 
 .finddoctor .mainimg{
     width: 312px;

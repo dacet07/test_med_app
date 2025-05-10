@@ -54,7 +54,7 @@ const Landing_Page = () => {
             </div>
              <div className="service-item">
                   <img src={healthyLogo} alt="Healthy logo" />
-              <h3>Health Tips and Guidance</h3>
+                  <Link to="/test"><h3>Health Tips and Guidance</h3></Link>
                             
             </div>
           </div>

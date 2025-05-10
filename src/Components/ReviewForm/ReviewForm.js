@@ -41,17 +41,40 @@ const Reviews = () => {
           </tr>
         </thead>
         <tbody>
-          {doctors.map((doc, index) => (
-            <tr key={index} style={{ borderTop: '1px solid #ccc' }}>
-              <td>{index + 1}</td>
-              <td>{doc.name}</td>
-              <td>{doc.speciality}</td>
-              <td>
-                <button onClick={() => setShowFormFor(doc.name)}>Click Here</button>
-              </td>
-              <td>{reviews[doc.name] || '—'}</td>
-            </tr>
-          ))}
+          {doctors.map((doc, index) => {
+            const reviewText = reviews[doc.name];
+            const isReviewed = !!reviewText;
+
+            // Extract only rating and review from the stored review string
+            let displayedReview = '—';
+            if (isReviewed) {
+              const parts = reviewText.split(', ');
+              const ratingPart = parts.find((p) => p.startsWith('Rating:'));
+              const reviewPart = parts.find((p) => p.startsWith('Review:'));
+              displayedReview = `${ratingPart?.replace('Rating: ', '') || ''} ★ - ${reviewPart?.replace('Review: ', '') || ''}`;
+            }
+
+            return (
+              <tr key={index} style={{ borderTop: '1px solid #ccc' }}>
+                <td>{index + 1}</td>
+                <td>{doc.name}</td>
+                <td>{doc.speciality}</td>
+                <td>
+                  <button
+                    onClick={() => setShowFormFor(doc.name)}
+                    disabled={isReviewed}
+                    style={{
+                      backgroundColor: isReviewed ? '#ccc' : '',
+                      cursor: isReviewed ? 'not-allowed' : 'pointer'
+                    }}
+                  >
+                    Click Here
+                  </button>
+                </td>
+                <td>{displayedReview}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
 

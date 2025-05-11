@@ -3,6 +3,9 @@ import { Link } from "react-router-dom"; // Importing the Link component from re
 import "./LandingPage.css"; // Importing the CSS styles for the Landing_Page component
 
 import healthyLogo from '../../assets/images/healthy_logo.png';
+import serviceOne from '../../assets/images/service1.jpg';
+import serviceTwo from '../../assets/images/service2.jpg';
+import serviceThree from '../../assets/images/service3.jpg';
 
 // Defining the Function component Landing_Page
 const Landing_Page = () => {
@@ -38,17 +41,17 @@ const Landing_Page = () => {
           <p>We offer a range of healthcare services designed to meet your needs.</p>
           <div className="services-list">
             <div className="service-item">
-                  <img src={healthyLogo} alt="Healthy logo" />
+                  <img src={serviceTwo} alt="Healthy logo" />
               <Link to="/instant-consultation"><h3>Instant Consultation</h3></Link>
               
             </div>
             <div className="service-item">
-                  <img src={healthyLogo} alt="Healthy logo" />
+                  <img src={serviceOne} alt="Healthy logo" />
                   <Link to="/search-doctor"><h3>Book an Appointment</h3></Link>
               
             </div>
             <div className="service-item">
-                  <img src={healthyLogo} alt="Healthy logo" />
+                  <img src={serviceThree} alt="Healthy logo" />
               <h3>Self Checkup</h3>
                             
             </div>

@@ -39,7 +39,7 @@ const BookingConsultation = () => {
                 
             const filtered = doctors.filter(
                 (doctor) =>
-                // 
+                
                 doctor.speciality.toLowerCase().includes(searchText.toLowerCase())
                 
             );
@@ -51,12 +51,14 @@ const BookingConsultation = () => {
     };
     const navigate = useNavigate();
     useEffect(() => {
+        const authtoken = sessionStorage.getItem("auth-token");
+        if (!authtoken) {
+            navigate("/login");
+            return; // stop further execution
+        }
         getDoctorsDetails();
-        // const authtoken = sessionStorage.getItem("auth-token");
-        // if (!authtoken) {
-        //     navigate("/login");
-        // }
-    }, [searchParams])
+    }, [searchParams]);
+    
 
     return (
         <center>

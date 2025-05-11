@@ -60,15 +60,15 @@ const ReportsLayout = () => {
                 <td>{doc.name}</td>
                 <td>{doc.speciality}</td>
                 <td>
-                  <button>
-                    View Report
-                  </button>
-                </td>
-                <td>
-                  <button>
-                    Download Report
-                  </button>
-                </td>
+  <a href="/patient_report.pdf" target="_blank" rel="noopener noreferrer">
+    <button>View Report</button>
+  </a>
+</td>
+<td>
+  <a href="/patient_report.pdf" download>
+    <button>Download Report</button>
+  </a>
+</td>
                 
               </tr>
             );
@@ -76,14 +76,7 @@ const ReportsLayout = () => {
         </tbody>
       </table>
 
-      {/* Show feedback form if one doctor is selected */}
-      {showFormFor && (
-        <FeedbackForm
-          doctorName={showFormFor}
-          onSubmit={handleSubmitReview}
-          onClose={() => setShowFormFor(null)}
-        />
-      )}
+     
     </div>
   );
 };

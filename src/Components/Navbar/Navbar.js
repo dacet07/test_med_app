@@ -77,31 +77,36 @@ const Navbar = () => {
         </li>
 
         {isLoggedIn ? (
-          <>
-            {/* Display Welcome message with email */}
-            <li className="link">
-              <span>Welcome, {displayName}</span>
-            </li>
-            <li className="link">
-              <button className="btn2" onClick={handleLogout}>
-                Logout
-              </button>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className="link">
-              <Link to="/signup">
-                <button className="btn1">Sign Up</button>
-              </Link>
-            </li>
-            <li className="link">
-              <Link to="/login">
-                <button className="btn1">Login</button>
-              </Link>
-            </li>
-          </>
-        )}
+  <>
+    <li className="link dropdown" onClick={handleDropdown}>
+      <span className="dropdown-toggle">Welcome, {displayName}</span>
+      {showDropdown && (
+        <div className="dropdown-menu">
+          <ProfileCard />
+        </div>
+      )}
+    </li>
+    <li className="link">
+      <button className="btn2" onClick={handleLogout}>
+        Logout
+      </button>
+    </li>
+  </>
+) : (
+  <>
+    <li className="link">
+      <Link to="/signup">
+        <button className="btn1">Sign Up</button>
+      </Link>
+    </li>
+    <li className="link">
+      <Link to="/login">
+        <button className="btn1">Login</button>
+      </Link>
+    </li>
+  </>
+)}
+
       </ul>
     </nav>
   );

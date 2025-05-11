@@ -116,23 +116,45 @@ const ProfileForm = () => {
   return (
     <div className="profile-container">
       {editMode ? (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="profile-form">
+          <h1>Edit Profile</h1>
           <label>
-            Email
+            Email:
             <input
               type="email"
               name="email"
-              value={userDetails.email}
-              disabled // Disable the email field
+              value={updatedDetails.email || ""}
+              disabled
             />
           </label>
-          {/* Create similar logic for displaying and editing name and phone from userDetails */}
+          <label>
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={updatedDetails.name || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
+          
+          <label>
+            Phone:
+            <input
+              type="text"
+              name="phone"
+              value={updatedDetails.phone || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
           <button type="submit">Save</button>
         </form>
       ) : (
         <div className="profile-details">
           <h1>Welcome, {userDetails.name}</h1>
-          {/* Implement code to display and allow editing of phone and email similar to above */}
+          <p><strong>Email:</strong> {userDetails.email}</p>
+          <p><strong>Phone:</strong> {userDetails.phone}</p>
           <button onClick={handleEdit}>Edit</button>
         </div>
       )}

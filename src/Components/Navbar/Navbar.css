@@ -1,22 +1,21 @@
-
 * {
     box-sizing: border-box;
   }
-
-body {
+  
+  body {
     background-attachment: fixed;
     background-image: url('../../assets/images/background.jpg');
-    background-size: cover; 
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
     font-family: 'Instrument Sans', sans-serif;
     font-size: 16px;
-}
-
-/* Styling for the main navigation bar */
-nav {
+  }
+  
+  /* Styling for the main navigation bar */
+  nav {
     padding: 0.5rem;
     position: fixed;
     top: 0%;
@@ -29,10 +28,10 @@ nav {
     justify-content: space-between;
     background-color: #D8EAFF;
     border-bottom: 3px solid #B4C2ED;
-}
-
-/* Styling for the dropdown menu */
-.dropdown-menu {
+  }
+  
+  /* Styling for the dropdown menu */
+  .dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
@@ -43,142 +42,140 @@ nav {
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
-}
-
-/* Styling for the user welcome message */
-.welcome-user {
+  }
+  
+  /* Styling for the user welcome message */
+  .welcome-user {
     position: relative;
     cursor: pointer;
-}
-
-/* Display dropdown menu on hover */
-.welcome-user:hover .dropdown-menu {
+  }
+  
+  /* Show dropdown menu when clicked */
+  .welcome-user:hover .dropdown-menu {
     display: block;
-}
-
-/* Styling for the items in the dropdown menu */
-.dropdown-menu li {
+  }
+  
+  /* Styling for the items in the dropdown menu */
+  .dropdown-menu li {
     display: block;
     width: 150px;
-    padding:5px;
-}
-
-/* Styling for links in the dropdown menu */
-.dropdown-menu li a {
+    padding: 5px;
+  }
+  
+  /* Styling for links in the dropdown menu */
+  .dropdown-menu li a {
     color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
-}
-
-/* Hover effect for links in the dropdown menu */
-.dropdown-menu li a:hover {
+  }
+  
+  /* Hover effect for links in the dropdown menu */
+  .dropdown-menu li a:hover {
     color: #2190ff;
-}
-
-/* Styling for the logo in the navbar */
-.nav__logo {
+  }
+  
+  /* Styling for the logo in the navbar */
+  .nav__logo {
     font-size: 1.5rem;
     font-weight: 600;
     font-family: 'Kaushan Script', cursive;
     cursor: pointer;
     text-decoration: none;
-}
-.nav__logo a{
+  }
+  
+  .nav__logo a {
     padding-left: 7%;
     text-decoration: none;
     color: #1D3582;
     display: flex;
-  align-items: center;
-  gap: 0.5rem;  
-    }
-.nav__logo img{
-    width:41px;
-}
-
-
-/* Styling for the icon in the navbar */
-.nav__icon {
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .nav__logo img {
+    width: 41px;
+  }
+  
+  /* Styling for the icon in the navbar */
+  .nav__icon {
     display: none;
     font-size: 2rem;
     cursor: pointer;
-}
-
-/* Styling for the navigation links */
-.nav__links {
+  }
+  
+  /* Styling for the navigation links */
+  .nav__links {
     list-style: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 1.1rem;
     font-weight: 500;
-}
-
-
-/* Styling for individual links in the navigation */
-.link a {
+  }
+  
+  /* Styling for individual links in the navigation */
+  .link a {
     padding: 0 1rem;
     color: #1D3582;
     transition: 0.3s;
     text-decoration: none;
-    
-}
-
+  }
   
-/* Hover effect for individual links in the navigation */
-.link a:hover {
+  /* Hover effect for individual links in the navigation */
+  .link a:hover {
     color: #3685fb;
-    text-decoration:underline;
-}
-
-/* Media queries for mobile responsiveness */
-@media (max-width: 768px) {
+    text-decoration: underline;
+  }
+  
+  /* Media queries for mobile responsiveness */
+  @media (max-width: 768px) {
     .nav__logo {
-        margin-right: auto;
+      margin-right: auto;
     }
-
+  
     .nav__icon {
-        display: block;
+      display: block;
     }
-
+  
     .nav__links {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
     }
-
+  
     .nav__links.active {
-        display: flex;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        margin: auto;
-        background-color: #fff;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem 0;
-        border-radius: 0.5rem;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        z-index: 999;
-        animation: slideDown 0.5s ease-in-out; /* Animation effect */
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      margin: auto;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 0;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      animation: slideDown 0.5s ease-in-out; /* Animation effect */
     }
-}
-
-/* Keyframes for slide down animation */
-@keyframes slideDown {
+  }
+  
+  /* Keyframes for slide down animation */
+  @keyframes slideDown {
     0% {
-        transform: translateY(-10px);
-        opacity: 0;
+      transform: translateY(-10px);
+      opacity: 0;
     }
     100% {
-        transform: translateY(0);
-        opacity: 1;
+      transform: translateY(0);
+      opacity: 1;
     }
-}
-
-/* Button styles */
-.btn1 {
+  }
+  
+  /* Button styles */
+  .btn1 {
     border: 2px solid #B4C2ED;
     background-color: #F6F8FF;
     color: #1D3582;
@@ -198,29 +195,29 @@ nav {
     cursor: pointer;
   }
   
-
-.btn1:hover {
+  .btn1:hover {
     background-color: #3685fb; /* Hover effect */
     color: white; /* Hover effect */
-}
-
-.btn2 {
+  }
+  
+  .btn2 {
     border: 2px solid #3685fb;
     background-color: white;
     color: black;
     border-radius: 50px;
-    height:30px;
-    display:flex; /* Align items and justify content */
-    align-items:center; /* Align items and justify content */
-    justify-content:center; /* Align items and justify content */
-    margin-top:3px; /* Margin from top */
-}
-
-.btn2:hover {
-    background-color:#3685fb; /* Hover effect */
-    color:white; /* Hover effect */
-}
-.profile-menu ul {
+    height: 30px;
+    display: flex; /* Align items and justify content */
+    align-items: center; /* Align items and justify content */
+    justify-content: center; /* Align items and justify content */
+    margin-top: 3px; /* Margin from top */
+  }
+  
+  .btn2:hover {
+    background-color: #3685fb; /* Hover effect */
+    color: white; /* Hover effect */
+  }
+  
+  .profile-menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -238,4 +235,21 @@ nav {
   .profile-card a:hover {
     text-decoration: underline;
   }
+  
+  /* Ensure dropdown appears directly below the welcome text */
+  .link.dropdown {
+    position: relative;
+  }
+  
+  .dropdown-toggle {
+    cursor: pointer;
+  }
+  
+  .dropdown-menu.show {
+    display: block !important;
+    top: 100%; /* Position dropdown below the welcome message */
+    left: 0;
+    position: absolute;
+  }
+  
   

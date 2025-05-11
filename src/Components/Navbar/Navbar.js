@@ -82,7 +82,16 @@ const Navbar = () => {
       <span className="dropdown-toggle">Welcome, {displayName}</span>
       {showDropdown && (
         <div className="dropdown-menu">
-          <ProfileCard />
+           <div className="profile-menu">
+      <ul>
+        <li>
+          <Link to="/profile">Your Profile</Link>
+        </li>
+        <li>
+          <Link to="/reports">Your Reports</Link>
+        </li>
+      </ul> 
+    </div>
         </div>
       )}
     </li>

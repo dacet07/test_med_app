@@ -1,0 +1,130 @@
+/* Base container for review section */
+.reviewform {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table Styles */
+  .reviewform table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    border: none;
+  }
+  
+  .reviewform th,
+  .reviewform td {
+    text-align: left;
+    padding: 12px;
+    border: none; 
+  }
+  .reviewform tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  .reviewform th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+  
+  .reviewform td button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .reviewform td button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .reviewform td button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Feedback form styles */
+  .feedback-form {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 450px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .feedback-form h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .feedback-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .feedback-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .feedback-form input[type="text"],
+  .feedback-form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+  }
+  
+  .feedback-form textarea {
+    min-height: 80px;
+  }
+  
+  .star-rating {
+    font-size: 24px;
+    color: #ccc;
+  }
+  
+  .star-rating span {
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .star-rating .filled {
+    color: #f5b301;
+  }
+  
+  .buttons button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: none;
+  }
+  
+  .buttons button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .buttons button.cancel {
+    background-color: #dc3545;
+    color: white;
+  }
+  
